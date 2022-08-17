@@ -1,0 +1,239 @@
+[
+    {
+      "inputs": [],
+      "name": "Router__LiquidityTooLow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Router__MinAmountTooLow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Router__NoLiquidity",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Router__PairDoesNotExist",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "firstToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "secondToken",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "firstSold",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "secondBought",
+          "type": "uint256"
+        }
+      ],
+      "name": "Swap",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "firstToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "secondToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "firstAmount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "secondAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "addLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenToSell",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenToBuy",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenToSellAmount",
+          "type": "uint256"
+        }
+      ],
+      "name": "getQuote",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "factory",
+          "type": "address"
+        }
+      ],
+      "name": "initializeFactoryAddress",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "firstToken",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "secondToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "s_factory",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenToSell",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenToBuy",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountToSell",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minAmountToBuy",
+          "type": "uint256"
+        }
+      ],
+      "name": "swapTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ]

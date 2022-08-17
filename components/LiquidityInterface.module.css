@@ -1,0 +1,32 @@
+.options {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    grid-gap: 20px;
+}
+
+.option {
+    border-radius: 20px;
+    box-shadow: rgb(190, 190, 190) 0px 0px 2px 1px;
+    padding: 3px;
+    background-color: white;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.optionChosen {
+    border-radius: 20px;
+    box-shadow: rgb(190, 190, 190) 0px 0px 2px 1px;
+    padding: 3px;
+    background: black;
+    color: white;
+    cursor: unset;
+}
+
+.option:hover {
+    background: black;
+    color: white;
+}

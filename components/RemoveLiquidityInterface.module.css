@@ -1,0 +1,107 @@
+.container {
+    margin: 30px 10px 30px 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: rgb(190, 190, 190) 0px 0px 2px 1px;
+    background-color: white;
+}
+
+.tokenInputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputAmountContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.maxToken {
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.tokenContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    gap: 15px;
+}
+
+.rate {
+    font-size: 16px;
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.arrowContainer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+}
+
+.mainButton {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px;
+    width: 150px;
+    border-radius: 30px;
+    border: none;
+    background-color: #25CAD7;
+    color: white;
+    transition: 0.3s;
+}
+
+.disabledButton {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px;
+    width: 200px;
+    border-radius: 30px;
+    border: none;
+    background-color: #25CAD7;
+    color: white;
+    opacity: 0.5;
+}
+
+.rates {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+}
+
+.mainButton:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: 570px;
+    }
+
+    .tokenInputContainer {
+        flex-direction: column;
+    }
+}

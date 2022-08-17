@@ -1,0 +1,84 @@
+.container {
+    margin: 30px 10px 30px 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: 500px;
+    border-radius: 20px;
+    box-shadow: rgb(190, 190, 190) 0px 0px 2px 1px;
+    background-color: white;
+}
+
+.title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.tokenInputContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.maxToken {
+    text-align: left;
+    font-size: 12px;
+}
+
+.liquidity {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    text-align: center;
+    font-size: 18px;
+}
+
+.aboveTokenContainer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: -10px;
+}
+
+.mainButton {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px;
+    width: 150px;
+    border-radius: 30px;
+    border: none;
+    background-color: #25CAD7;
+    color: white;
+    transition: 0.3s;
+}
+
+.disabledButton {
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px;
+    width: 200px;
+    border-radius: 30px;
+    border: none;
+    background-color: #25CAD7;
+    color: white;
+    opacity: 0.5;
+}
+
+.mainButton:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .container {
+        height: 600px;
+    }
+
+    .tokenInputContainer {
+        flex-direction: column;
+    }
+}
