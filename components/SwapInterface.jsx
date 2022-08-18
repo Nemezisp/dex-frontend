@@ -302,7 +302,7 @@ const SwapInterface = () => {
             </div>
             <div className={styles.arrowContainer}>
                 <span className={styles.arrow}>&#8675;</span>
-                <span className={styles.rate}> {exchangeRate.toFixed(2)} {tokenOut.prefix ? tokenOut.prefix : "X"} per {tokenIn.prefix ? tokenIn.prefix : "X"}</span>
+                <span className={styles.rate}> {parseFloat(exchangeRate).toFixed(3)} {tokenOut.prefix ? tokenOut.prefix : "X"} per {tokenIn.prefix ? tokenIn.prefix : "X"}</span>
             </div>
             <div className={styles.aboveTokenBContainer}>
                 <SwitchTokenInputMode onClick={handleCustomTokenB} token={customTokenB}/>        
