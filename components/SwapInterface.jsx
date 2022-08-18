@@ -35,18 +35,6 @@ const SwapInterface = () => {
     const [customTokenB, setCustomTokenB] = useState(false)
 
     useEffect(() => {
-        const checkInterval = setInterval(async () => {
-            if (account && pairAddress !== ZERO_ADDRESS) {
-                await getRate()
-                await updateAmountOut()
-            }
-        }, 15000)
-        return(() => {
-            clearInterval(checkInterval)
-        })
-    }, [])
-
-    useEffect(() => {
         if (account && tokenIn.name) {
             checkAllowance()
             checkBalance()
@@ -58,7 +46,7 @@ const SwapInterface = () => {
     }, [exchangeRate])
 
     useEffect(() => {
-        if (account && tokenIn.address !== tokenOut.address && tokenIn.name && tokenOut.name) {
+        if (account && tokenIn.name && tokenOut.name) {
             getPairAddress()
             getRate()
         }
@@ -67,6 +55,9 @@ const SwapInterface = () => {
     useEffect(() => {
         if (account && pairAddress !== ZERO_ADDRESS) {
             getLiquidity()
+        }
+        if (pairAddress === ZERO_ADDRESS) {
+            setTokenOutLiquidity(0)
         }
     }, [pairAddress, amountIn])
 
@@ -121,6 +112,7 @@ const SwapInterface = () => {
           onSuccess: (tx) => handleApproveSuccess(tx),
           onError: () => handleApproveError(),
         });
+        
     }
 
     const handleApproveError = () => {
@@ -165,7 +157,7 @@ const SwapInterface = () => {
         await runContractFunction({
             params: getPairOptions,
             onSuccess: (address) => setPairAddress(address),
-            onError: () => setPairAddress(ZERO_ADDRESS),
+            onError: (error) => console.log(error),
         });
     }
 
@@ -240,6 +232,12 @@ const SwapInterface = () => {
     const handleApproveSuccess = async (tx) => {
         await tx.wait(1)
         setTokenInApproved(amountIn)
+        dispatch({
+            type:"success",
+            title:"Success!",
+            message:"Approval successfull!",
+            position: "topR"
+        })
     }
 
     const changeAmountIn = (event) => {

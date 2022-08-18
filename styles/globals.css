@@ -33,3 +33,10 @@ h1 {
 #connectContainer > div > button:hover {
   opacity: 0.5;
 }
+
+#__next>div.sc-bTMaZy {
+  position: fixed;
+  z-index: 30;
+  right: 0;
+  top: 0;
+}

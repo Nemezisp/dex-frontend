@@ -32,17 +32,6 @@ const AddLiquidityInterface = () => {
     const [customTokenB, setCustomTokenB] = useState(false)
 
     useEffect(() => {
-        const checkInterval = setInterval(async () => {
-            if (account && pairAddress !== ZERO_ADDRESS) {
-                await getRates()
-            }
-        }, 15000)
-        return(() => {
-            clearInterval(checkInterval)
-        })
-    }, [])
-
-    useEffect(() => {
         if (account) {
             checkAllowance()
             checkBalance()
@@ -159,6 +148,12 @@ const AddLiquidityInterface = () => {
     const handleApproveSuccess = async (tx) => {
         await tx.wait(1)
         setLiquidityApproved(liquidityAmount) 
+        dispatch({
+            type:"success",
+            title:"Success!",
+            message:"Approval successfull!",
+            position: "topR"
+        })
     }
 
     const changeLiquidityAmount = (event) => {
