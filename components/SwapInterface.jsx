@@ -1,13 +1,13 @@
 import styles from "./SwapInterface.module.css"
 import { useNotification } from "web3uikit";
 import { useEffect, useState } from "react";
-import tokens from "../constants/tokens.json"
+import tokenList from "../constants/tokens.json"
 import ERC20Abi from "../constants/ERC20.json"
 import factoryAbi from "../constants/Factory.json"
 import routerAbi from "../constants/Router.json"
 import { useWeb3Contract, useMoralis } from 'react-moralis';
 import { ethers } from "ethers";
-import {routerAddress, factoryAddress, ZERO_ADDRESS} from "../constants/main"
+import {routerAddresses, factoryAddresses, ZERO_ADDRESS} from "../constants/main"
 import ChooseTokenInput from "./ChooseTokenInput";
 import ChooseCustomToken from "./ChooseCustomToken";
 import ChooseTokenAmount from "./ChooseTokenAmount";
@@ -15,7 +15,11 @@ import SwitchTokenInputMode from "./SwitchTokenInputMode";
 
 const SwapInterface = () => {
     const { runContractFunction } = useWeb3Contract();
-    const { account, isWeb3Enabled } = useMoralis();
+    const { account, isWeb3Enabled, chainId } = useMoralis();
+
+    const routerAddress = routerAddresses[parseInt(chainId, 16)]
+    const factoryAddress = factoryAddresses[parseInt(chainId, 16)]
+    const tokens = tokenList[parseInt(chainId, 16).toString()]
 
     const dispatch = useNotification()
 
@@ -215,9 +219,9 @@ const SwapInterface = () => {
             message:"Tokens swapped successfully!",
             position: "topR"
         })
-        getRate()
-        checkBalance()
-        checkAllowance()
+        await getRate()
+        await checkBalance()
+        await checkAllowance()
     }
 
     const handleGetRateSuccess = (quote) => {

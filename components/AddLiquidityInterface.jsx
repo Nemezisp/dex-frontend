@@ -1,14 +1,14 @@
 import styles from "./AddLiquidityInterface.module.css"
 import { useNotification } from "web3uikit";
 import { useEffect, useState } from "react";
-import tokens from "../constants/tokens.json"
+import tokenList from "../constants/tokens.json"
 import ERC20Abi from "../constants/ERC20.json"
 import factoryAbi from "../constants/Factory.json"
 import routerAbi from "../constants/Router.json"
 import pairAbi from "../constants/Pair.json"
 import { useWeb3Contract, useMoralis } from 'react-moralis';
 import { ethers } from "ethers";
-import {routerAddress, factoryAddress, ZERO_ADDRESS} from "../constants/main"
+import {routerAddresses, factoryAddresses, ZERO_ADDRESS} from "../constants/main"
 import ChooseTokenInput from "./ChooseTokenInput";
 import ChooseCustomToken from "./ChooseCustomToken";
 import ChooseTokenAmount from "./ChooseTokenAmount";
@@ -16,7 +16,11 @@ import SwitchTokenInputMode from "./SwitchTokenInputMode";
 
 const AddLiquidityInterface = () => {
     const { runContractFunction } = useWeb3Contract();
-    const { account, isWeb3Enabled } = useMoralis();
+    const { account, isWeb3Enabled, chainId } = useMoralis();
+
+    const routerAddress = routerAddresses[parseInt(chainId, 16)]
+    const factoryAddress = factoryAddresses[parseInt(chainId, 16)]
+    const tokens = tokenList[parseInt(chainId, 16).toString()]
 
     const dispatch = useNotification()
 
@@ -261,20 +265,6 @@ const AddLiquidityInterface = () => {
         })
     }
 
-    const addLiquiditySuccess = async (tx) => {
-        await tx.wait(1)
-        dispatch({
-            type:"success",
-            title:"Success!",
-            message:"Liquidity added successfully!",
-            position: "topR"
-        })
-        getRate()
-        checkBalances()
-        checkAllowances()
-        getCurrentLiquidity()
-    }
-
     const handleCustomTokenA = () => {
         customTokenA && setTokenA(tokens[0])
         setCustomTokenA(!customTokenA)
@@ -316,13 +306,27 @@ const AddLiquidityInterface = () => {
 
     const handleGetRatesSuccess = (response, supply) => {
         const {firstToken, firstTokenRate, secondToken, secondTokenRate} = response
-        tokenA.address === firstToken ? setTokenALiquidity(parseFloat(ethers.utils.formatEther(firstTokenRate))*supply) : setTokenBLiquidity(parseFloat(ethers.utils.formatEther(firstTokenRate))*supply)
-        tokenB.address === firstToken ? setTokenALiquidity(parseFloat(ethers.utils.formatEther(secondTokenRate))*supply) : setTokenBLiquidity(parseFloat(ethers.utils.formatEther(secondTokenRate))*supply)
+        tokenA.address.toLowerCase() === firstToken.toLowerCase() ? setTokenALiquidity(parseFloat(ethers.utils.formatEther(firstTokenRate))*supply) : setTokenBLiquidity(parseFloat(ethers.utils.formatEther(firstTokenRate))*supply)
+        tokenB.address.toLowerCase() === firstToken.toLowerCase() ? setTokenALiquidity(parseFloat(ethers.utils.formatEther(secondTokenRate))*supply) : setTokenBLiquidity(parseFloat(ethers.utils.formatEther(secondTokenRate))*supply)
     }
 
     const handleGetRatesError = () => {
         setTokenALiquidity(0)
         setTokenBLiquidity(0)
+    }
+
+    const addLiquiditySuccess = async (tx) => {
+        await tx.wait(1)
+        dispatch({
+            type:"success",
+            title:"Success!",
+            message:"Liquidity added successfully!",
+            position: "topR"
+        })
+        await getRate()
+        await checkBalances()
+        await checkAllowances()
+        await getCurrentLiquidity()
     }
     
     return (
