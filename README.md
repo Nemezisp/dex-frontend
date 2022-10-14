@@ -9,11 +9,14 @@ Create new liquidity pairs, add or remove liquidity.
 ## Stack
 Frontend built in **React + Next.js**.
 
-Using **Moralis** for Web3 connection.\
-Backend - developed using **Hardhat**.\
+Using **Moralis** for Web3 connection.
+
+Backend - developed using **Hardhat**.
+
 **Solidity** contracts deployed to Kovan testnet:
 - sample ERC20 tokens
 - Factory (responsible for new pair creation)
 - Router (responsible for most actions, swapping tokens, adding and removing liquidity)
 - Pair (for each created pair, holds all the pair liquidity, also acts as a liquidity token)
+- 
 Set of smart contract **tests with Waffle/Mocha/Chai**.
