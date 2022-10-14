@@ -7,7 +7,8 @@ Swap between any ERC20 tokens (choose from the list or add any token using its a
 Create new liquidity pairs, add or remove liquidity.
 
 ## Stack
-Frontend built in **React + Next.js**.\ 
+Frontend built in **React + Next.js**.
+
 Using **Moralis** for Web3 connection.\
 Backend - developed using **Hardhat**.\
 **Solidity** contracts deployed to Kovan testnet:
