@@ -18,5 +18,5 @@ Backend - developed using **Hardhat**.
 - Factory (responsible for new pair creation)
 - Router (responsible for most actions, swapping tokens, adding and removing liquidity)
 - Pair (for each created pair, holds all the pair liquidity, also acts as a liquidity token)
-- 
+
 Set of smart contract **tests with Waffle/Mocha/Chai**.
